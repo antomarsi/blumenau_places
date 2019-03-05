@@ -25,7 +25,7 @@ class App extends Component {
             <Col xs="12">
               <MapContainer
                 center={this.state.center}
-                apiKey="AIzaSyDlH8Id0Zsx_UuWS6nXc5K1ExPq5-U6Auw"
+                apiKey={process.env.GOOGLE_API_KEY}
                 language="pt-BR"
               />
             </Col>
