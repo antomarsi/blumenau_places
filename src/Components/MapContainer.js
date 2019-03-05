@@ -1,28 +1,40 @@
 import React, { Component } from "react";
-import GoogleMapReact, { GoogleMapMarkers } from "google-map-react";
+import GoogleMapReact from "google-map-react";
+import NewMarker from "./NewMarker";
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
-
-class SimpleMap extends Component {
+class MapContainer extends Component {
   handleApiLoaded = (map, maps) => {
-    // use map and maps objects
   };
-  render() {
+  onSelectMaker = (place) => {
+    const {filterhandler, selectPlaceHandle} = this.props;
+    filterhandler(place.name);
+    selectPlaceHandle(place.id);
+  }
+  render = () => {
+    const { center, apiKey, places, selectedPlace } = this.props;
     return (
-      // Important! Always set the container height explicitly
-      <div style={{ height: "100vh", width: "100%" }}>
+      <div style={{ height: "94.6vh", width: "100%" }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: this.props.apiKey }}
-          defaultCenter={this.props.center}
+          bootstrapURLKeys={{ key: apiKey }}
+          defaultCenter={center}
           yesIWantToUseGoogleMapApiInternals
           defaultZoom={16}
           onGoogleApiLoaded={({ map, maps }) => this.handleApiLoaded(map, maps)}
         >
-          <AnyReactComponent text="My Marker" />
+          {places.map(place => (
+            <NewMarker
+              key={place.id}
+              text={place.name}
+              lat={place.coordinates.latitude}
+              lng={place.coordinates.longitude}
+              selected={place.id === selectedPlace}
+              selectPlaceHandle={() => this.onSelectMaker(place)}
+            />
+          ))}
         </GoogleMapReact>
       </div>
     );
-  }
+  };
 }
 
-export default SimpleMap;
+export default MapContainer;

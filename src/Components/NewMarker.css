@@ -1,0 +1,12 @@
+.marker {
+    color: #de4b41;
+    text-shadow: 0 0 3px #343a40;
+}
+.marker:hover {
+    color: #802c27;
+    text-Shadow: 0 0 3px #343a40;
+}
+.marker.selected {
+    color: #32c787;
+    text-Shadow: 0 0 3px #343a40;
+}
