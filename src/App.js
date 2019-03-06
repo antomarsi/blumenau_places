@@ -68,7 +68,7 @@ class App extends Component {
         />
         <Container fluid>
           <Row>
-            <Col xs="3" style={backgroundStyle}>
+            <Col xs="12" sm="3" style={backgroundStyle}>
               <Sidebar
                 places={this.state.places.filter(place => {
                   return place.name.toLowerCase().includes(this.state.filter.toLowerCase());
@@ -77,8 +77,9 @@ class App extends Component {
                 selectedPlace={this.state.selectedPlace}
               />
             </Col>
-            <Col xs="9" style={backgroundBigStyle}>
+            <Col xs="12" sm="9" style={backgroundBigStyle}>
               <MapContainer
+                tabIndex="-1"
                 places={this.state.places}
                 center={this.state.center}
                 apiKey={apiKey}

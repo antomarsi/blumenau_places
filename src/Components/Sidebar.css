@@ -1,0 +1,11 @@
+.sidebar {
+  height: 94.6vh;
+  overflow-y: auto;
+}
+@media (max-width: 576px) {
+  .sidebar {
+    height: 44.5vh;
+    overflow-y: auto;
+    margin-bottom: 0.5rem;
+  }
+}

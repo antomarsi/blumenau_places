@@ -1,25 +1,25 @@
 import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 import NewMarker from "./NewMarker";
+import PropTypes from "prop-types";
+import "./MapContainer.css";
 
 class MapContainer extends Component {
-  handleApiLoaded = (map, maps) => {
-  };
-  onSelectMaker = (place) => {
-    const {filterhandler, selectPlaceHandle} = this.props;
+  onSelectMaker = place => {
+    const { filterhandler, selectPlaceHandle } = this.props;
     filterhandler(place.name);
     selectPlaceHandle(place.id);
-  }
+  };
+
   render = () => {
     const { center, apiKey, places, selectedPlace } = this.props;
     return (
-      <div style={{ height: "94.6vh", width: "100%" }}>
+      <div className="map">
         <GoogleMapReact
           bootstrapURLKeys={{ key: apiKey }}
           defaultCenter={center}
           yesIWantToUseGoogleMapApiInternals
           defaultZoom={16}
-          onGoogleApiLoaded={({ map, maps }) => this.handleApiLoaded(map, maps)}
         >
           {places.map(place => (
             <NewMarker
@@ -36,5 +36,15 @@ class MapContainer extends Component {
     );
   };
 }
+
+MapContainer.propTypes = {
+  center: PropTypes.shape({
+    lat: PropTypes.number,
+    lng: PropTypes.number
+  }),
+  apiKey: PropTypes.string.isRequired,
+  places: PropTypes.array,
+  selectedPlace: PropTypes.object
+};
 
 export default MapContainer;

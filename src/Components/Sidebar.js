@@ -1,21 +1,12 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
-
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardTitle,
-  CardText,
-  CardImg
-} from "reactstrap";
+import { Card, CardHeader, CardBody, CardTitle, CardImg } from "reactstrap";
+import "./Sidebar.css";
 
 class Sidebar extends Component {
-
   render() {
     const { places, selectPlaceHandle, selectedPlace } = this.props;
     return (
-      <div style={{ height: "94.6vh", overflowY: "auto" }}>
+      <div className="sidebar">
         {places.map(place => (
           <Card
             outline
@@ -36,18 +27,22 @@ class Sidebar extends Component {
                 />
               )}
               <CardTitle>{`${place.location.address1}`}</CardTitle>
-              <CardTitle>{`${place.location.address2}`}</CardTitle>
-              <CardTitle>{`${place.location.address3}`}</CardTitle>
-              <CardText>
-                With supporting text below as a natural lead-in to additional
-                content.
-              </CardText>
             </CardBody>
           </Card>
         ))}
+        {places.length > 0 && (
+          <Card
+            outline
+            color="danger"
+            style={{ width: "100%", marginBottom: "1rem" }}
+          >
+            <CardHeader>Nenhum resultado encontrado</CardHeader>
+          </Card>
+        )}
       </div>
     );
   }
 }
+
 
 export default Sidebar;
