@@ -29,7 +29,7 @@ class App extends Component {
     selectedPlace: null
   };
 
-  componentDidMount = () => {
+  onGoogleMapApiLoad = () => {
     let yelp = new YelpApi(this.YELP_API_KEY);
     yelp.findBlumenau().then(yelp_response => {
       this.setState({
@@ -44,7 +44,7 @@ class App extends Component {
         }
       });
     });
-  };
+  }
 
   setSelectedPlace = placeId => {
     this.setState({ selectedPlace: placeId });
@@ -80,13 +80,16 @@ class App extends Component {
             <Col xs="12" sm="9" style={backgroundBigStyle}>
               <MapContainer
                 tabIndex="-1"
-                places={this.state.places}
+                places={this.state.places.filter(place => {
+                  return place.name.toLowerCase().includes(this.state.filter.toLowerCase());
+                })}
                 center={this.state.center}
                 apiKey={apiKey}
                 language="pt-BR"
                 filterhandler={this.setFilterPlace}
                 selectPlaceHandle={this.setSelectedPlace}
                 selectedPlace={this.state.selectedPlace}
+                onGoogleMapApiLoad={this.onGoogleMapApiLoad}
               />
             </Col>
           </Row>

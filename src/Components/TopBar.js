@@ -44,6 +44,7 @@ class TopBar extends Component {
               <NavItem>
                 <Typeahead
                   id="search-bar"
+                  tabIndex="1"
                   placeholder="Pesquisar estabelecimento"
                   aria-label="Pesquisar estabelecimento"
                   onChange={data => this.onChangeHandler(data)}
@@ -53,8 +54,9 @@ class TopBar extends Component {
                   labelKey="name"
                 />
               </NavItem>
-              <NavItem>
+              <NavItem tabIndex="-1 ">
                 <NavLink
+                  tabIndex="3"
                   href="https://github.com/antomarsi/blumenau_places"
                   target="_blank"
                 >

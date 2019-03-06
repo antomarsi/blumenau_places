@@ -1,12 +1,24 @@
+@keyframes bounce {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
 .marker {
-    color: #de4b41;
-    text-shadow: 0 0 3px #343a40;
+  color: #de4b41;
+  text-shadow: 0 0 3px #343a40;
 }
 .marker:hover {
-    color: #802c27;
-    text-Shadow: 0 0 3px #343a40;
+  color: #802c27;
+  text-shadow: 0 0 3px #343a40;
 }
 .marker.selected {
-    color: #32c787;
-    text-Shadow: 0 0 3px #343a40;
+  color: #32c787;
+  text-shadow: 0 0 3px #343a40;
+  animation: bounce 0.5s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
 }

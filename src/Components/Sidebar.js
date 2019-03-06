@@ -6,31 +6,34 @@ class Sidebar extends Component {
   render() {
     const { places, selectPlaceHandle, selectedPlace } = this.props;
     return (
-      <div className="sidebar">
-        {places.map(place => (
-          <Card
-            outline
-            color={place.id === selectedPlace ? "success" : ""}
-            key={place.id}
-            id={place.id}
-            style={{ width: "100%", marginBottom: "1rem" }}
-            onClick={() => selectPlaceHandle(place.id)}
-          >
-            <CardHeader>{place.name}</CardHeader>
-            <CardBody>
-              {place.image_url && place.image_url && (
-                <CardImg
-                  top
-                  width="100%"
-                  src={place.image_url}
-                  alt={place.name}
-                />
-              )}
-              <CardTitle>{`${place.location.address1}`}</CardTitle>
-            </CardBody>
-          </Card>
+      <ul tabIndex="-1" className="sidebar">
+        {places.map((place, index) => (
+          <li key={place.id} tabIndex="2">
+            <Card
+              outline
+              color={place.id === selectedPlace ? "success" : ""}
+              id={place.id}
+              style={{ width: "100%", marginBottom: "1rem" }}
+              onClick={() => selectPlaceHandle(place.id)}
+            >
+              <CardHeader>{place.name}</CardHeader>
+              <CardBody>
+                {place.image_url && place.image_url && (
+                  <CardImg
+                    top
+                    width="100%"
+                    src={place.image_url}
+                    alt={place.name}
+                  />
+                )}
+                {place.location.address1 && (
+                  <CardTitle>{`${place.location.address1}`}</CardTitle>
+                )}
+              </CardBody>
+            </Card>
+          </li>
         ))}
-        {places.length > 0 && (
+        {places.length <= 0 && (
           <Card
             outline
             color="danger"
@@ -39,10 +42,9 @@ class Sidebar extends Component {
             <CardHeader>Nenhum resultado encontrado</CardHeader>
           </Card>
         )}
-      </div>
+      </ul>
     );
   }
 }
-
 
 export default Sidebar;
