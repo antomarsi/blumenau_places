@@ -2,7 +2,9 @@
 
 ## About the project
 
-The project is a simple "Neighborhood Map", i used the Google Maps API and Yelp to search for the places
+The project is a simple "Neighborhood Map", i used the Google Maps API and Yelp to search for the places.
+
+You can access a live version at [https://antomarsi.github.io/blumenau_pages](https://antomarsi.github.io/blumenau_pages)
 
 To start the project, it's easy, just `clone` or download the repository, after that, you need to install the packages, just run:
 
