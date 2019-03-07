@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/blumenau_places/precache-manifest.9aa6b722b578e816714f904ab15ad3bc.js"
+  "/blumenau_places/precache-manifest.30a65ca874e03182b24d5e59c5d046dd.js"
 );
 
 workbox.clientsClaim();
